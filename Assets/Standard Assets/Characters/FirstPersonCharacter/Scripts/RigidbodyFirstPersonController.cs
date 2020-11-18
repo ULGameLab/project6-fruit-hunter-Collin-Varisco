@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 using UnityStandardAssets.CrossPlatformInput;
 
 namespace UnityStandardAssets.Characters.FirstPerson
@@ -11,12 +13,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [Serializable]
         public class MovementSettings
         {
-            public float ForwardSpeed = 8.0f;   // Speed when walking forward
-            public float BackwardSpeed = 4.0f;  // Speed when walking backwards
-            public float StrafeSpeed = 4.0f;    // Speed when walking sideways
-            public float RunMultiplier = 2.0f;   // Speed when sprinting
+            public float ForwardSpeed = 1.4f;   // Speed when walking forward
+            public float BackwardSpeed = 1.0f;  // Speed when walking backwards
+            public float StrafeSpeed = 1.4f;    // Speed when walking sideways
+            public float RunMultiplier = 1.2f;   // Speed when sprinting
 	        public KeyCode RunKey = KeyCode.LeftShift;
-            public float JumpForce = 30f;
+            public float JumpForce = 0.5f;
             public AnimationCurve SlopeCurveModifier = new AnimationCurve(new Keyframe(-90.0f, 1.0f), new Keyframe(0.0f, 1.0f), new Keyframe(90.0f, 0.0f));
             [HideInInspector] public float CurrentTargetSpeed = 8f;
 
@@ -44,13 +46,18 @@ namespace UnityStandardAssets.Characters.FirstPerson
 					CurrentTargetSpeed = ForwardSpeed;
 				}
 #if !MOBILE_INPUT
+                 
 	            if (Input.GetKey(RunKey))
 	            {
-		            CurrentTargetSpeed *= RunMultiplier;
+                  
+                        CurrentTargetSpeed *= RunMultiplier;
+                    
+                    
 		            m_Running = true;
 	            }
 	            else
 	            {
+                    CurrentTargetSpeed = ForwardSpeed;
 		            m_Running = false;
 	            }
 #endif
@@ -136,6 +143,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
         }
 
+       
 
         private void FixedUpdate()
         {
@@ -181,8 +189,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 if (m_PreviouslyGrounded && !m_Jumping)
                 {
                     StickToGroundHelper();
+                    
                 }
             }
+            
             m_Jump = false;
         }
 
@@ -206,6 +216,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     m_RigidBody.velocity = Vector3.ProjectOnPlane(m_RigidBody.velocity, hitInfo.normal);
                 }
             }
+            
         }
 
 

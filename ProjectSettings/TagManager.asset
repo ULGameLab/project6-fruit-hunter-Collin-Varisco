@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Coin
   - Fruit
+  - Enemy
+  - Bullet
+  - Infinite
   layers:
   - Default
   - TransparentFX
