@@ -70,18 +70,46 @@ public class Count : MonoBehaviour
     
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Fruit"))
+        if (other.gameObject.CompareTag("Apple"))
         {
           current_Fruit += 1;
           if(infinite_Health == false){
             PLAYER_HEALTH += 2;
-          } else {
+          } 
+          else {
             PLAYER_HEALTH += 4;
           }
           
         
           countFruit.text = "FRUIT: " + current_Fruit.ToString() + "/" + total_Fruit.ToString();
           countText.text = "HEALTH: " + PLAYER_HEALTH.ToString();  
+        }
+
+
+        if (other.gameObject.CompareTag("Orange"))
+        {
+          current_Fruit += 1;
+          if(infinite_Health == false){
+            PLAYER_HEALTH += 3;
+          } 
+          else {
+            PLAYER_HEALTH += 6;
+          }
+          
+        
+          countFruit.text = "FRUIT: " + current_Fruit.ToString() + "/" + total_Fruit.ToString();
+          countText.text = "HEALTH: " + PLAYER_HEALTH.ToString();  
+        }
+
+
+        if (other.gameObject.CompareTag("Donut"))
+        {
+          if(infinite_Health == false){
+            PLAYER_HEALTH -= 4;
+            countFruit.text = "FRUIT: " + current_Fruit.ToString() + "/" + total_Fruit.ToString();
+            countText.text = "HEALTH: " + PLAYER_HEALTH.ToString();  
+          } 
+        
         }
         if(other.gameObject.CompareTag("Enemy"))
         {
@@ -94,6 +122,7 @@ public class Count : MonoBehaviour
         }
         if(other.gameObject.CompareTag("Infinite"))
         {
+            current_Fruit += 1;
             PlayerPrefs.SetInt("Invincible", 1);
             countText.text = "HEALTH: INFINITE";
             infinite_Health = true;

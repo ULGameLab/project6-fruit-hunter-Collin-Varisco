@@ -10,6 +10,10 @@ TagManager:
   - Bullet
   - Infinite
   - Dead
+  - Apple
+  - Lemon
+  - Donut
+  - Orange
   layers:
   - Default
   - TransparentFX
