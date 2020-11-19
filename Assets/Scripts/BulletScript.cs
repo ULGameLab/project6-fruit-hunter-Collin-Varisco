@@ -9,7 +9,7 @@ public class BulletScript : MonoBehaviour
     public GameObject Bullet;
 
     // Enter the Speed of the Bullet from the Component inspector.
-    public float BulletForce = 100.0f;
+    public float BulletForce = 200.0f;
 
     //Destroy time
     public float destroyTime = 3.0f;

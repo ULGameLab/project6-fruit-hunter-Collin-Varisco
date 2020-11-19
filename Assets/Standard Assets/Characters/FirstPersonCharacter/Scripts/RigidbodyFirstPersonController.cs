@@ -14,11 +14,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public class MovementSettings
         {
             public float ForwardSpeed = 1.4f;   // Speed when walking forward
-            public float BackwardSpeed = 1.0f;  // Speed when walking backwards
+            public float BackwardSpeed = 1.4f;  // Speed when walking backwards
             public float StrafeSpeed = 1.4f;    // Speed when walking sideways
             public float RunMultiplier = 1.2f;   // Speed when sprinting
-	        public KeyCode RunKey = KeyCode.LeftShift;
-            public float JumpForce = 0.5f;
+	          public KeyCode RunKey = KeyCode.LeftShift;
+            public float JumpForce = 2.0f;
             public AnimationCurve SlopeCurveModifier = new AnimationCurve(new Keyframe(-90.0f, 1.0f), new Keyframe(0.0f, 1.0f), new Keyframe(90.0f, 0.0f));
             [HideInInspector] public float CurrentTargetSpeed = 8f;
 
@@ -57,7 +57,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 	            }
 	            else
 	            {
-                    CurrentTargetSpeed = ForwardSpeed;
+                    //CurrentTargetSpeed = ForwardSpeed;
 		            m_Running = false;
 	            }
 #endif
