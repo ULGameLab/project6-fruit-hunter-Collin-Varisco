@@ -34,7 +34,7 @@ public class Count : MonoBehaviour
          tempHealth = PlayerPrefs.GetInt("HealthTotal"); 
          PLAYER_HEALTH = PlayerPrefs.GetInt("HealthTotal");
          if(PlayerPrefs.GetInt("Invincible") == 0){
-            countText.text = "HEALTH: " + tempHealth.ToString(); 
+            countText.text = "HEALTH: " + PLAYER_HEALTH.ToString(); 
          }
         }
        if(PLAYER_HEALTH <= 0)
