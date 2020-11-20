@@ -11,6 +11,10 @@ public class MainMenu : MonoBehaviour
       SceneManager.LoadScene("SampleScene");
     }
 
+    public void StartTPS(){
+      SceneManager.LoadScene("TPS");
+    }
+
     public void MainMenuScreen(){
       SceneManager.LoadScene("start");
     }
