@@ -18,7 +18,7 @@ public class GameData : MonoBehaviour
       HealthCount = PlayerPrefs.GetInt("HealthTotal");
       FruitCount = PlayerPrefs.GetInt("FruitCollected");
       FruitText.text = "FRUIT: " + FruitCount.ToString() + "/8";     
-      //HealthText.text = "HEALTH: " + HealthCount.ToString();
+      HealthText.text = "HEALTH: " + HealthCount.ToString();
     }
 
     // Update is called once per frame

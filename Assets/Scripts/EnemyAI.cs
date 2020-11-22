@@ -16,7 +16,7 @@ public class EnemyAI : MonoBehaviour
     public float chaseDistance = 20.0f;
     protected EnemyState state = EnemyState.DEFAULT;
     protected Vector3 destination = new Vector3(0, 0, 0);
-    AudioSource myaudio;
+    public AudioSource myaudio;
     float idleTime = 0.0f;
 
     // Start is called before the first frame update
@@ -57,15 +57,15 @@ public class EnemyAI : MonoBehaviour
               PlayerPrefs.SetInt("HealthTotal", PlayerPrefs.GetInt("HealthTotal") + 4);
             }
             StartCoroutine(PlayAndDestroy(myaudio.clip.length));
-            destroyEnemy();
+            //destroyEnemy();
         }
     }
 
     private IEnumerator PlayAndDestroy(float waitTime)
     {
         myaudio.Play();
-        yield return new WaitForSeconds(waitTime);
-        Destroy(gameObject);
+        yield return new WaitForSeconds(waitTime/5);
+        destroyEnemy();
     }
 
     private IEnumerator idleMovement(float waitTime){
