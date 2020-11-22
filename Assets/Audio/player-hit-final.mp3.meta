@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+<<<<<<< HEAD:Assets/enemy-death.mp3.meta
+guid: b0d450abb617f454490c3de447303b84
+=======
+guid: 58a7ad16b0206df4ba6b1fc580fc0287
+>>>>>>> main:Assets/Audio/player-hit-final.mp3.meta
+AudioImporter:
+  externalObjects: {}
+  serializedVersion: 6
+  defaultSettings:
+    loadType: 0
+    sampleRateSetting: 0
+    sampleRateOverride: 44100
+    compressionFormat: 1
+    quality: 1
+    conversionMode: 0
+  platformSettingOverrides: {}
+  forceToMono: 0
+  normalize: 1
+  preloadAudioData: 1
+  loadInBackground: 0
+  ambisonic: 0
+  3D: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

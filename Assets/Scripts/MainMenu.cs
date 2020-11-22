@@ -7,11 +7,28 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
 
-    public void StartFPS(){
+    public void StartFPS(){ 
+      PlayerPrefs.SetInt("FPSLoaded", 1);
       SceneManager.LoadScene("SampleScene");
     }
 
+    public void StartTPS(){
+      PlayerPrefs.SetInt("TPSLoaded", 1);
+      SceneManager.LoadScene("ThirdPerson");
+    }
+
+    public void Restart(){
+      if(PlayerPrefs.GetInt("FPSLoaded") == 1){
+        StartFPS();
+      }
+      if(PlayerPrefs.GetInt("TPSLoaded") == 1){
+        StartTPS();
+      }
+    }
+
     public void MainMenuScreen(){
+      PlayerPrefs.SetInt("FPSLoaded", 0);
+      PlayerPrefs.SetInt("TPSLoaded", 0);
       SceneManager.LoadScene("start");
     }
 

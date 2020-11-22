@@ -8,9 +8,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/start.unity
     guid: fd6d69438fb63dcb88d70acec90d5b32
+  - enabled: 0
+    path: Assets/Scenes/TPS.unity
+    guid: c42e1b669cb4bbd038d55eaba4e9b16c
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/ThirdPerson.unity
+    guid: d8582e0aca27e4e669adeb1c2d811114
   - enabled: 1
     path: Assets/Scenes/DeathScreen.unity
     guid: af5b78454829257e986b51742c5b491d
