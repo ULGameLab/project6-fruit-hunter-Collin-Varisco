@@ -11,6 +11,9 @@ public enum EnemyState { CHASE, MOVING, DEFAULT };
 //[RequireComponent(typeof(NavMeshAgent))];
 public class EnemyAI : MonoBehaviour
 {
+    ParticleSystem explosion;
+    bool explosionStarted = false;
+
     GameObject player;
     UnityEngine.AI.NavMeshAgent agent;
     public float chaseDistance = 20.0f;
@@ -22,6 +25,7 @@ public class EnemyAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        explosion = transform.GetComponent<ParticleSystem>();
         myaudio = GetComponent<AudioSource>();
         player = GameObject.FindWithTag("Player");
         agent = this.GetComponent<UnityEngine.AI.NavMeshAgent>();
@@ -41,6 +45,22 @@ public class EnemyAI : MonoBehaviour
 
     } 
 
+    private void StartExplosion()
+    {
+        if(explosionStarted == false)
+        {
+            explosion.Play();
+            explosionStarted = true;
+        }
+    }
+
+
+    private void StopExplosion()
+    {
+        explosionStarted = false;
+        explosion.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Player"))
@@ -56,6 +76,8 @@ public class EnemyAI : MonoBehaviour
             } else { 
               PlayerPrefs.SetInt("HealthTotal", PlayerPrefs.GetInt("HealthTotal") + 4);
             }
+            gameObject.GetComponent<ParticleSystemRenderer>().enabled = true;
+            StartExplosion();
             StartCoroutine(PlayAndDestroy(myaudio.clip.length));
             //destroyEnemy();
         }
@@ -65,7 +87,10 @@ public class EnemyAI : MonoBehaviour
     {
         myaudio.Play();
         yield return new WaitForSeconds(waitTime/5);
-        destroyEnemy();
+        StopExplosion();
+        GameManager gameManagerReference = GameObject.FindObjectOfType<GameManager>();
+        gameManagerReference.SpawnEnemy(gameObject);
+        Destroy(gameObject);
     }
 
     private IEnumerator idleMovement(float waitTime){
@@ -81,10 +106,12 @@ public class EnemyAI : MonoBehaviour
         switch (state)
         {
             case EnemyState.DEFAULT:
-                destination = transform.position + RandomPosition();
+                destination = player.transform.position;
                 if (Vector3.Distance(transform.position, player.transform.position) < chaseDistance) {
                     state = EnemyState.CHASE;
                 }
+                break;
+                /*
                 else                
                 {     
                     state = EnemyState.MOVING;
@@ -93,7 +120,7 @@ public class EnemyAI : MonoBehaviour
                     }
                     agent.SetDestination(player.transform.position);
                 }
-                break;
+                break;*/
             case EnemyState.MOVING:
                 
                 if(Vector3.Distance(transform.position, destination) < 3)

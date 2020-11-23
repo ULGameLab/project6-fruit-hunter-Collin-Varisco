@@ -132,6 +132,7 @@ public class Count : MonoBehaviour
             FruitSound.Play();
             current_Fruit += 1;
             PlayerPrefs.SetInt("Invincible", 1);
+            countFruit.text = "FRUIT: " + current_Fruit.ToString() + "/" + total_Fruit.ToString();
             countText.text = "HEALTH: INFINITE";
             infinite_Health = true;
             
