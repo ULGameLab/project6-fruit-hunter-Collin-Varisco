@@ -18,7 +18,6 @@ public class Count : MonoBehaviour
     public AudioSource FruitSound;
     public AudioSource JunkSound;
     public AudioSource InfiniteSound;
-    //public bool collision = false;
     public float power_time = 0.0f;
     public AudioSource takenDamage;
 
