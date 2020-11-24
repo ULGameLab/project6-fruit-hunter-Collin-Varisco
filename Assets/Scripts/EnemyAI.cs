@@ -65,16 +65,23 @@ public class EnemyAI : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-                transform.position += (transform.position + RandomPosition());
-                agent.SetDestination(destination);
+            Vector3 hitPlayerPosition = transform.position;
+            float pauseMovement = 0.0f;
+            while(pauseMovement < 2.0f)
+            {
+                transform.position = hitPlayerPosition;
+                pauseMovement += Time.deltaTime;
+            }
                 
         }
         if(other.gameObject.CompareTag("Bullet"))
         {
-            if(PlayerPrefs.GetInt("Invincible") == 0){
-              PlayerPrefs.SetInt("HealthTotal", PlayerPrefs.GetInt("HealthTotal") + 2);
-            } else { 
-              PlayerPrefs.SetInt("HealthTotal", PlayerPrefs.GetInt("HealthTotal") + 4);
+            if (PlayerPrefs.GetInt("Invincible") == 0)
+            {
+                PlayerPrefs.SetInt("Points", PlayerPrefs.GetInt("Points") + 10);
+            } else if(PlayerPrefs.GetInt("Invincible") == 1)
+            {
+                PlayerPrefs.SetInt("Points", PlayerPrefs.GetInt("Points") + 20);
             }
             gameObject.GetComponent<ParticleSystemRenderer>().enabled = true;
             StartExplosion();

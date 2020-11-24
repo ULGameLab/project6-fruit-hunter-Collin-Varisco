@@ -6,19 +6,19 @@ using UnityEngine.UI;
 public class GameData : MonoBehaviour
 {
     private int FruitCount;
-    private int HealthCount;
+    private int PointsCount;
     public Text FruitText;
-    public Text HealthText;
+    public Text PointsText;
   
 
 
     // Start is called before the first frame update
     void Start()
     {
-      HealthCount = PlayerPrefs.GetInt("HealthTotal");
+      PointsCount = PlayerPrefs.GetInt("Points");
       FruitCount = PlayerPrefs.GetInt("FruitCollected");
       FruitText.text = "FRUIT: " + FruitCount.ToString() + "/8";     
-      HealthText.text = "HEALTH: " + HealthCount.ToString();
+      PointsText.text = "POINTS: " + PointsCount.ToString();
     }
 
     // Update is called once per frame

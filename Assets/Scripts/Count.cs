@@ -10,22 +10,28 @@ public class Count : MonoBehaviour
     private int PLAYER_HEALTH = 100;
     private int current_Fruit = 0;
     private int total_Fruit = 8;
+    private int current_Points = 0;
     private bool infinite_Health = false;
     public Text countText;
     public Text countFruit;
+    public Text PointsText;
     public AudioSource FruitSound;
     public AudioSource JunkSound;
+    public AudioSource InfiniteSound;
     //public bool collision = false;
     public float power_time = 0.0f;
+    public AudioSource takenDamage;
 
     private int tempHealth;
 
     // Start is called before the first frame update
     void Start()
     {
+        PlayerPrefs.SetInt("Points", current_Points);
         PlayerPrefs.SetInt("HealthTotal", PLAYER_HEALTH);
         tempHealth = PlayerPrefs.GetInt("HealthTotal", PLAYER_HEALTH);
         PlayerPrefs.SetInt("Invincible", 0);
+        PointsText.text = "POINTS: " + current_Points.ToString();
         countText.text = "HEALTH: " + PLAYER_HEALTH.ToString();
         countFruit.text = "FRUIT: " + current_Fruit.ToString() + "/8";
     }
@@ -33,6 +39,11 @@ public class Count : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       if(PlayerPrefs.GetInt("Points") > current_Points)
+        {
+            current_Points = PlayerPrefs.GetInt("Points");
+            PointsText.text = "POINTS: " + current_Points.ToString();
+        } 
        if(PlayerPrefs.GetInt("HealthTotal") > tempHealth || PlayerPrefs.GetInt("HealthTotal") < tempHealth){
          tempHealth = PlayerPrefs.GetInt("HealthTotal"); 
          PLAYER_HEALTH = PlayerPrefs.GetInt("HealthTotal");
@@ -122,6 +133,7 @@ public class Count : MonoBehaviour
         {
             if (infinite_Health == false)
             {
+                takenDamage.Play();
                 PLAYER_HEALTH -= 10;
                 countText.text = "HEALTH: " + PLAYER_HEALTH.ToString();
                 PlayerPrefs.SetInt("collision", 1); 
@@ -129,7 +141,7 @@ public class Count : MonoBehaviour
         }
         if(other.gameObject.CompareTag("Infinite"))
         {
-            FruitSound.Play();
+            InfiniteSound.Play();
             current_Fruit += 1;
             PlayerPrefs.SetInt("Invincible", 1);
             countFruit.text = "FRUIT: " + current_Fruit.ToString() + "/" + total_Fruit.ToString();
