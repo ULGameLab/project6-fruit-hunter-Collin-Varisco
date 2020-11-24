@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
 
+
     public void StartFPS(){ 
       PlayerPrefs.SetInt("FPSLoaded", 1);
       SceneManager.LoadScene("SampleScene");
@@ -35,7 +36,11 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      Cursor.visible = true;
+        Debug.Log("");
+        Debug.Log("Level Complete Variables--------------");
+        Debug.Log("FPS: " + PlayerPrefs.GetInt("FPSLoaded"));
+        Debug.Log("TPS: " + PlayerPrefs.GetInt("TPSLoaded"));
+        Cursor.visible = true;
       Screen.lockCursor = false;
     }
 

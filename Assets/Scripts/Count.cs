@@ -72,7 +72,19 @@ public class Count : MonoBehaviour
        if(current_Fruit == 8){
           PlayerPrefs.SetInt("HealthTotal", PLAYER_HEALTH); 
           PlayerPrefs.SetInt("FruitCollected", current_Fruit); 
-          SceneManager.LoadScene("LevelComplete"); 
+            if(PlayerPrefs.GetInt("FPSLoaded") == 1)
+            {
+                PlayerPrefs.SetInt("FPSLoaded", 1);
+                PlayerPrefs.SetInt("TPSLoaded", 0);
+            }
+            if (PlayerPrefs.GetInt("TPSLoaded") == 1)
+            {
+                PlayerPrefs.SetInt("TPSLoaded", 1);
+                PlayerPrefs.SetInt("FPSLoaded", 0);
+            }
+            Debug.Log("FPS: " + PlayerPrefs.GetInt("FPSLoaded"));
+            Debug.Log("TPS: " + PlayerPrefs.GetInt("TPSLoaded"));
+            SceneManager.LoadScene("LevelComplete"); 
        }
     }
 

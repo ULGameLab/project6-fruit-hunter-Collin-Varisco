@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 165165375}
   - component: {fileID: 165165374}
+  - component: {fileID: 165165376}
   m_Layer: 0
   m_Name: MainMenu
   m_TagString: Untagged
@@ -166,6 +167,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &165165376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165165373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5e3188ebbc8fe17c937390eb2e3b37d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FruitText: {fileID: 1114627898}
+  PointsText: {fileID: 1660714530}
 --- !u!1 &552514767
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,7 +902,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 165165374}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: StartFPS
+        m_MethodName: Restart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -896,7 +911,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &1180889214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1029,11 +1044,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1478651400}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5e3188ebbc8fe17c937390eb2e3b37d, type: 3}
+  m_Script: {fileID: 11500000, guid: e31e255c0ccbeec81a7e9a974695ec5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FruitText: {fileID: 1114627898}
-  PointsText: {fileID: 1660714530}
 --- !u!1 &1558946124 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: ba6a41dc489914734857bb5924eb70ad, type: 3}
@@ -1057,10 +1070,10 @@ MonoBehaviour:
   clipPlaneOffset: 0.07
   reflectLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 535
   refractLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 535
 --- !u!114 &1558946130
 MonoBehaviour:
   m_ObjectHideFlags: 0
