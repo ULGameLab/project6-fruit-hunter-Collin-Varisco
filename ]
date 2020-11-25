@@ -1,0 +1,44 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class GameManager : MonoBehaviour
+{
+    public GameObject enemy;
+    public Vector3 spawnPoint;
+
+    public Vector3[] positions; 
+
+    // Start is called before the first frame update
+    void Start()
+    {
+              
+              Vector3 one = new Vector3(-8.226135f,8.025831f, 17.75531f);
+              
+              /*
+              Vector3 two = {-12.97043, 7.999, 54.84979};
+              Vector3 three= {61.729, 7.999, 91.9};
+              Vector3 four = {67.78568, 8.025831, -37.20508};
+              Vector3 five = {93.72, 8.025831, -4.64};
+              Vector3 six = {107.89, 8.025831, -4.06};
+              Vector3 seven= {73.015, 8.025831, -30.638};
+              Vector3 eight=             {70.02, 8.025831, -86.84};
+              Vector3 nine = {83.88, 7.999, 97.251};
+              */ 
+              positions[0] = one;
+              /*= {{one}, two, three, four, five, six, seven, eight, nine};
+              */ 
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    public void SpawnEnemy(GameObject enemyObject){
+      spawnPoint = enemyObject.transform.position;
+      Instantiate(enemy, spawnPoint, Quaternion.identity);
+    } 
+
+}
